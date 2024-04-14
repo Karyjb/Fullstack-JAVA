@@ -26,11 +26,19 @@ public class ConecctionStatement {
 
 
                 myStamt = myConn.createStatement();
-                myRes = myStamt.executeQuery("SELECT * FROM employees");
 
 
+                //Actualizar datos
+
+                //int rowsAffected = myStamt.executeUpdate("UPDATE employees set email = 'johanador@example.com' WHERE first_name = 'Johana' ");
+                //myRes = myStamt.executeQuery("SELECT * fROM employees order by pa_surname");
+
+                //Eliminar datos
+
+                int rowsAffected = myStamt.executeUpdate("DELETE from employees WHERE id = 7 ");
+                myRes = myStamt.executeQuery("SELECT * fROM employees order by pa_surname");
               while (myRes.next()){
-                    System.out.println(myRes.getString("FIRST_NAME"));
+                    System.out.println(myRes.getString("first_name" ) + "," + myRes.getString("id"));
                 }
 
             }catch (Exception e){
