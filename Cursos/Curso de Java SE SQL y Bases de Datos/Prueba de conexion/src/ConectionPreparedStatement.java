@@ -8,7 +8,7 @@ public class Main {
         Connection myConn = null;
         //Statement myStamt = null;
         PreparedStatement myStamt = null;
-        ResultSet myRes = null;
+
 
         String url = "jdbc:mysql://localhost:3306/project";
         String user = "root";
@@ -22,13 +22,12 @@ public class Main {
             myStamt = myConn.prepareStatement(sql);
             myStamt.setString(1,"Johana");
             myStamt.setString(2,"Dorantes");
-            //myStamt = myConn.createStatement();
-            //myRes = myStamt.executeQuery( "SELECT * FROM employees" );
+
 
             int rowsAffected = myStamt.executeUpdate();
 
-            while (myRes.next()){
-                System.out.println(myRes.getString("FIRST_NAME"));
+            if (rowsAffected > 0){
+                System.out.println("Se ha creado un cliente");
             }
         }catch (Exception e){
         e.printStackTrace();
